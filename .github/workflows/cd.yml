@@ -1,0 +1,30 @@
+name: MLOps CD
+
+on:
+  workflow_run:
+    workflows: ["MLOps CI"]
+    types:
+      - completed
+
+jobs:
+  docker-publish:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build Docker image
+        run: |
+          docker build -t deepanjalikathirvadivel/used-car-mlops:latest .
+
+      - name: Push Docker image
+        run: |
+          docker push deepanjalikathirvadivel/used-car-mlops:latest
