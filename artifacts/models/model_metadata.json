@@ -13,17 +13,16 @@
     "test_rmse": 8246.500348632746,
     "test_r2": 0.8279373645782471,
     "test_mape": 19.178074598312378,
-    "fit_seconds": 40.041393995285034,
+    "fit_seconds": 44.55332612991333,
     "cv_rmse_logscale": 0.2648686999392481,
     "cv_mae_logscale": 0.1920266844737455,
     "cv_r2_logscale": 0.8567165530981594
   },
-  "trained_at_utc": "2026-10-06T05:40:17+00:00",
+  "trained_at_utc": "2026-10-06T06:07:32+00:00",
   "mlflow": {
-    "tracking_uri": "file:./mlruns",
+    "tracking_uri": "file:E:/MLOPS_output/day02/mlruns",
     "experiment_name": "used-car-price-prediction",
-    "run_id": "93744de9dffe4ea48424564f8c1e38f4",
-    "summary_run_id": "ad1b7a979b0240a0bce48aab3c9b95eb",
+    "run_id": "df5875cbd1d74352950366287664c392",
     "model_artifact_path": "model"
   },
   "random_state": 42,
@@ -70,8 +69,7 @@
       "Milage_Medium": "int64",
       "Milage_High": "int64",
       "Milage_Very High": "int64"
-    },
-    "note": "Input = the cleaned feature frame produced in Section 5 (raw 'brand' string included; brand encoding + scaling + log-target happen inside the model)."
+    }
   },
   "feature_preparation": {
     "label_encoder_classes": {
