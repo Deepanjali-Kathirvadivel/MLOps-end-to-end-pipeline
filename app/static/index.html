@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Used Car Price Predictor
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/static/style.css"
+    >
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Header -->
+
+        <header class="header">
+
+            <div>
+
+                <h1>
+                    Used Car Price Predictor
+                </h1>
+
+                <p>
+                    Predict the estimated price of a used car
+                    using our trained machine learning model.
+                </p>
+
+            </div>
+
+            <div class="status">
+
+                <span
+                    id="statusDot"
+                    class="status-dot"
+                ></span>
+
+                <span id="statusText">
+                    Checking API...
+                </span>
+
+            </div>
+
+        </header>
+
+
+        <!-- Main Card -->
+
+        <main class="card">
+
+            <div class="section-header">
+
+                <h2>
+                    Vehicle Details
+                </h2>
+
+                <span>
+                    ML Prediction
+                </span>
+
+            </div>
+
+
+            <form id="predictionForm">
+
+                <div class="form-grid">
+
+
+                    <!-- Brand -->
+
+                    <div class="form-group">
+
+                        <label for="brand">
+                            Brand
+                        </label>
+
+                        <input
+                            type="text"
+                            id="brand"
+                            placeholder="BMW"
+                            value="BMW"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Model Year -->
+
+                    <div class="form-group">
+
+                        <label for="modelYear">
+                            Model Year
+                        </label>
+
+                        <input
+                            type="number"
+                            id="modelYear"
+                            min="1980"
+                            max="2025"
+                            value="2018"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Mileage -->
+
+                    <div class="form-group">
+
+                        <label for="mileage">
+                            Mileage (miles)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="mileage"
+                            min="0"
+                            value="45000"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Horsepower -->
+
+                    <div class="form-group">
+
+                        <label for="horsepower">
+                            Horsepower
+                        </label>
+
+                        <input
+                            type="number"
+                            id="horsepower"
+                            min="1"
+                            value="300"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Engine Displacement -->
+
+                    <div class="form-group">
+
+                        <label for="engineDisplacement">
+                            Engine Displacement (L)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="engineDisplacement"
+                            min="0.1"
+                            step="0.1"
+                            value="3.0"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Fuel Type -->
+
+                    <div class="form-group">
+
+                        <label for="fuelType">
+                            Fuel Type
+                        </label>
+
+                        <select
+                            id="fuelType"
+                            required
+                        >
+
+                            <option value="GASOLINE">
+                                Gasoline
+                            </option>
+
+                            <option value="DIESEL">
+                                Diesel
+                            </option>
+
+                            <option value="HYBRID">
+                                Hybrid
+                            </option>
+
+                            <option value="ELECTRIC">
+                                Electric
+                            </option>
+
+                            <option value="OTHER">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Transmission -->
+
+                    <div class="form-group">
+
+                        <label for="transmission">
+                            Transmission
+                        </label>
+
+                        <select
+                            id="transmission"
+                            required
+                        >
+
+                            <option value="A/T">
+                                Automatic
+                            </option>
+
+                            <option value="M/T">
+                                Manual
+                            </option>
+
+                            <option value="CVT">
+                                CVT
+                            </option>
+
+                            <option value="OTHER">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- V Engine -->
+
+                    <div class="form-group">
+
+                        <label for="vEngine">
+                            V-Type Engine
+                        </label>
+
+                        <select
+                            id="vEngine"
+                            required
+                        >
+
+                            <option value="true">
+                                Yes
+                            </option>
+
+                            <option value="false">
+                                No
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Accident -->
+
+                    <div class="form-group">
+
+                        <label for="accident">
+                            Accident / Damage History
+                        </label>
+
+                        <select
+                            id="accident"
+                            required
+                        >
+
+                            <option value="None reported">
+                                None reported
+                            </option>
+
+                            <option
+                                value="At least 1 accident or damage reported"
+                            >
+                                Accident / damage reported
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Clean Title -->
+
+                    <div class="form-group">
+
+                        <label for="cleanTitle">
+                            Clean Title
+                        </label>
+
+                        <select
+                            id="cleanTitle"
+                            required
+                        >
+
+                            <option value="Yes">
+                                Yes
+                            </option>
+
+                            <option value="No">
+                                No
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Button -->
+
+                <button
+                    type="submit"
+                    id="predictButton"
+                    class="predict-button"
+                >
+
+                    Predict Used Car Price
+
+                </button>
+
+            </form>
+
+
+            <!-- Loading -->
+
+            <div
+                id="loading"
+                class="loading hidden"
+            >
+
+                <div class="spinner"></div>
+
+                <span>
+                    Generating prediction...
+                </span>
+
+            </div>
+
+
+            <!-- Error -->
+
+            <div
+                id="error"
+                class="error hidden"
+            ></div>
+
+
+            <!-- Result -->
+
+            <section
+                id="result"
+                class="result hidden"
+            >
+
+                <p class="result-label">
+                    Estimated Used Car Price
+                </p>
+
+                <div
+                    id="predictedPrice"
+                    class="price"
+                >
+                    $0
+                </div>
+
+                <p class="model-info">
+                    Prediction generated by
+                    <strong id="modelName">
+                        XGBoost
+                    </strong>
+                </p>
+
+
+                <div class="stats">
+
+                    <div class="stat">
+
+                        <span>
+                            Vehicle Age
+                        </span>
+
+                        <strong id="vehicleAge">
+                            -
+                        </strong>
+
+                    </div>
+
+                    <div class="stat">
+
+                        <span>
+                            Mileage / Year
+                        </span>
+
+                        <strong id="mileagePerYear">
+                            -
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <!-- Footer -->
+
+        <footer>
+
+            <span>
+                Used Car Price Prediction
+            </span>
+
+            <span>
+                FastAPI • XGBoost • Docker • MLOps
+            </span>
+
+        </footer>
+
+    </div>
+
+
+    <script
+        src="/static/script.js">
+    </script>
+
+</body>
+
+</html>
