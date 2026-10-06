@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# MLflow local files
+mlruns/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+
+# DVC cache
+.dvc/cache/
+
+# Python packaging
+*.egg-info/
+dist/
+build/
